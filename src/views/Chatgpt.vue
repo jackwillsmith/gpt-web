@@ -32,12 +32,26 @@ import { chatgpt, MyData } from "../http";
 
 const input = ref("");
 const answer = ref("");
-const openAdd = async () => {
-  let res = (await chatgpt({ ask: input.value })).data;
-  // console.log(res);
-  const data = res as MyData;
-  // console.log("data", res, "data.answer", data.answer);
-  answer.value = data.answer;
+// const openAdd = async () => {
+//   let res = (await chatgpt({ ask: input.value })).data;
+//   // console.log(res);
+//   const data = res as MyData;
+//   // console.log("data", res, "data.answer", data.answer);
+//   answer.value = data.answer;
+// };
+
+const openAdd = () => {
+  const url = `/chat?ask=${encodeURIComponent(input.value)}`;
+  const eventSource = new EventSource(url);
+
+  eventSource.onmessage = function(event) {
+    const newData = JSON.parse(event.data);
+    answer.value += newData.chunk; // 假设服务器发送的是数据片段
+  };
+
+  eventSource.onerror = function() {
+    eventSource.close();
+  };
 };
 </script>
 
