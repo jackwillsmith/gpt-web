@@ -1,6 +1,6 @@
 <template>
     <el-carousel :interval="4000" type="card" height="100vh">
-      <el-carousel-item v-for="item in tableData" :key="item">
+      <el-carousel-item v-for="item in tableData">
         <h3 class="medium"> 
           <a :href="item.uri" target="_blank">
             <img :src="`/imgs/${item.image}`" :alt="item.name" :title="item.name" style="font-family: 'Courier New', Courier, monospace;">
