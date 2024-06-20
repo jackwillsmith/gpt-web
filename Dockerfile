@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:16.15.1
 
 # 设置工作目录
 WORKDIR /usr/src/app
@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 # 安装依赖
-RUN npm install
+RUN npm install --force && npm install -g increase-memory-limit && increase-memory-limit
 
 # 执行 Vite 构建命令，生成 dist 目录
 RUN npm run build
