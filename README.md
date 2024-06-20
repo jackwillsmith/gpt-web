@@ -10,4 +10,4 @@ pnpm dev
 
 >test<br>
 
-浏览器(默认)打开, `http://localhost:5173/chatgpt`
+浏览器(默认)打开, `http://localhost:5173/`
