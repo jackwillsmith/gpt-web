@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "install": "npm install --force",
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
@@ -25,5 +26,8 @@
     "unplugin-vue-components": "^0.24.1",
     "vite": "^4.2.0",
     "vue-tsc": "^1.2.0"
+  },
+  "engines": {
+    "node": "14.15.0"
   }
 }
